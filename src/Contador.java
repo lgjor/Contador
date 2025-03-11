@@ -32,19 +32,24 @@ public class Contador {
      * @param args Os argumentos da linha de comando (não utilizados neste programa).
      */
 	public static void main(String[] args) {
-		Scanner terminal = new Scanner(System.in);
-		System.out.print("Digite o primeiro parâmetro: ");
-		int parametroUm = terminal.nextInt();
-		System.out.print("Digite o segundo parâmetro: ");
-		int parametroDois = terminal.nextInt();
-		//validar se parametroUm é MAIOR que parametroDois e lançar a exceção
+        Scanner terminal = new Scanner(System.in);
         try {
+            System.out.print("Digite o primeiro parâmetro: ");
+            int parametroUm = terminal.nextInt();
+            System.out.print("Digite o segundo parâmetro: ");
+            int parametroDois = terminal.nextInt();
+            //validar se parametroUm é MAIOR que parametroDois e lançar a exceção
+            try {
                 //chamando o método contendo a lógica de contagem
                 contar(parametroUm, parametroDois);
-		} catch (ParametrosInvalidosException exception) {
-			//imprimir a mensagem: O segundo parâmetro deve ser maior que o primeiro
-           System.out.println(exception.getMessage());
-		}
+            } catch (ParametrosInvalidosException exception) {
+                //imprimir a mensagem: O segundo parâmetro deve ser maior que o primeiro
+                System.out.println(exception.getMessage());
+            }
+        } finally {
+            // fechar o Scanner
+            terminal.close();
+        }
 	}
 
     /**
